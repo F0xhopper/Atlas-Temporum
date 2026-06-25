@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "_comment": "Authoring format for territory_version rows. One feature = one polity's borders over a [validFrom,validTo) interval. Geometry here is illustrative/simplified, NOT historically accurate. Replace with real simplified MultiPolygons.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "politySlug": "kingdom-of-england",
+        "validFrom": 1000,
+        "validTo": 1066,
+        "confidence": "approximate",
+        "note": "Late Anglo-Saxon England (illustrative bounds)."
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-3.0,50.5],[1.5,50.5],[1.5,53.5],[-3.0,53.5],[-3.0,50.5]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "politySlug": "kingdom-of-england",
+        "validFrom": 1066,
+        "validTo": null,
+        "confidence": "approximate",
+        "note": "Norman and later England (illustrative bounds)."
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-3.2,50.4],[1.6,50.4],[1.6,55.0],[-3.2,55.0],[-3.2,50.4]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "politySlug": "kingdom-of-scotland",
+        "validFrom": 1000,
+        "validTo": null,
+        "confidence": "approximate",
+        "note": "Kingdom of Scotland (illustrative bounds)."
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-5.5,55.0],[-1.5,55.0],[-1.5,58.5],[-5.5,58.5],[-5.5,55.0]]]]
+      }
+    }
+  ]
+}

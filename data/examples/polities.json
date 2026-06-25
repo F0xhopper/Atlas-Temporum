@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "kingdom-of-england",
+    "name": "Kingdom of England",
+    "kind": "kingdom",
+    "color": "#b03a2e",
+    "description": "The unified English realm; Anglo-Saxon, then Norman and Angevin.",
+    "foundedYear": 927
+  },
+  {
+    "slug": "kingdom-of-scotland",
+    "name": "Kingdom of Scotland",
+    "kind": "kingdom",
+    "color": "#1f6f8b",
+    "description": "The Scottish realm north of the Tweed and Solway.",
+    "foundedYear": 843
+  },
+  {
+    "slug": "principality-of-wales",
+    "name": "Principality of Wales",
+    "kind": "principality",
+    "color": "#27865a",
+    "description": "Welsh princedoms, later annexed by England in 1284.",
+    "dissolvedYear": 1284
+  },
+  {
+    "slug": "earldom-of-mercia",
+    "name": "Earldom of Mercia",
+    "kind": "earldom",
+    "color": "#c9962e",
+    "description": "A great Anglo-Saxon earldom of the English midlands.",
+    "dissolvedYear": 1071
+  }
+]

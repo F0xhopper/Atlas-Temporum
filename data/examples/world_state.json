@@ -1,0 +1,94 @@
+{
+  "_comment": "Example response body of GET /api/v1/state?year=1066. Illustrative geometry.",
+  "year": 1066,
+  "territories": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "politySlug": "kingdom-of-england",
+          "name": "Kingdom of England",
+          "color": "#b03a2e",
+          "kind": "kingdom",
+          "confidence": "approximate"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [[[[-3.2,50.4],[1.6,50.4],[1.6,55.0],[-3.2,55.0],[-3.2,50.4]]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "politySlug": "kingdom-of-scotland",
+          "name": "Kingdom of Scotland",
+          "color": "#1f6f8b",
+          "kind": "kingdom",
+          "confidence": "approximate"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [[[[-5.5,55.0],[-1.5,55.0],[-1.5,58.5],[-5.5,58.5],[-5.5,55.0]]]]
+        }
+      }
+    ]
+  },
+  "cities": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": { "slug": "london", "name": "London", "sizeRank": 3.4 },
+        "geometry": { "type": "Point", "coordinates": [-0.1276, 51.5074] }
+      },
+      {
+        "type": "Feature",
+        "properties": { "slug": "york", "name": "York", "sizeRank": 2.6 },
+        "geometry": { "type": "Point", "coordinates": [-1.0809, 53.9591] }
+      }
+    ]
+  },
+  "events": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "slug": "battle-of-hastings",
+          "title": "Battle of Hastings",
+          "type": "battle",
+          "year": 1066,
+          "dateDisplay": "14 October 1066",
+          "isCirca": false,
+          "summary": "Decisive Norman victory over the Anglo-Saxons.",
+          "importance": 5,
+          "citySlug": "hastings"
+        },
+        "geometry": { "type": "Point", "coordinates": [0.4876, 50.9116] }
+      }
+    ]
+  },
+  "monarchs": [
+    {
+      "personSlug": "harold-godwinson",
+      "name": "Harold II",
+      "epithet": "Godwinson",
+      "house": "Wessex",
+      "title": "King of England",
+      "reignFrom": 1066,
+      "reignTo": 1066,
+      "isDisputed": false
+    }
+  ],
+  "summary": {
+    "year": 1066,
+    "headline": "1066 — The Norman Conquest",
+    "bullets": [
+      "Edward the Confessor dies; succession disputed",
+      "Harold II crowned King of England",
+      "Harald Hardrada defeated at Stamford Bridge",
+      "William of Normandy wins the Battle of Hastings"
+    ]
+  }
+}

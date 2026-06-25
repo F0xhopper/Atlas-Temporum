@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "battle-of-hastings",
+    "title": "Battle of Hastings",
+    "type": "battle",
+    "year": 1066,
+    "dateStart": "1066-10-14",
+    "dateDisplay": "14 October 1066",
+    "isCirca": false,
+    "lng": 0.4876,
+    "lat": 50.9116,
+    "citySlug": "hastings",
+    "politySlug": "kingdom-of-england",
+    "summary": "Decisive Norman victory over the Anglo-Saxons.",
+    "description": "Duke William of Normandy defeated and killed King Harold II, breaking Anglo-Saxon resistance and opening the way to the Norman conquest of England.",
+    "outcome": "Norman victory; William crowned King of England on 25 December 1066.",
+    "importance": 5,
+    "participants": [
+      { "personSlug": "william-i", "role": "victor" },
+      { "personSlug": "harold-godwinson", "role": "defeated" }
+    ]
+  },
+  {
+    "slug": "magna-carta",
+    "title": "Sealing of Magna Carta",
+    "type": "treaty",
+    "year": 1215,
+    "dateStart": "1215-06-15",
+    "dateDisplay": "15 June 1215",
+    "isCirca": false,
+    "lng": -0.5483,
+    "lat": 51.4447,
+    "citySlug": null,
+    "politySlug": "kingdom-of-england",
+    "summary": "King John seals a charter limiting royal authority.",
+    "description": "Pressured by rebel barons, King John sealed Magna Carta at Runnymede, establishing that the king was subject to the law and protecting certain baronial and church rights.",
+    "outcome": "Royal authority constrained; foundation of later constitutional tradition.",
+    "importance": 5,
+    "participants": [
+      { "personSlug": "john-king-of-england", "role": "signatory" }
+    ]
+  },
+  {
+    "slug": "black-death-arrival",
+    "title": "The Black Death reaches England",
+    "type": "disease",
+    "year": 1348,
+    "dateStart": "1348",
+    "dateEnd": "1350",
+    "dateDisplay": "1348–1350",
+    "isCirca": true,
+    "lng": -2.2426,
+    "lat": 50.6139,
+    "citySlug": null,
+    "politySlug": "kingdom-of-england",
+    "summary": "Bubonic plague arrives, killing a third to half of the population.",
+    "description": "The plague landed on the south coast in 1348 and spread across the country, causing catastrophic mortality and reshaping the medieval economy and society.",
+    "outcome": "Massive depopulation; labour shortages; long-term social upheaval.",
+    "importance": 5,
+    "participants": []
+  }
+]
