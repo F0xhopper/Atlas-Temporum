@@ -17,6 +17,12 @@ want, but typing them is faster.
 MVP set (expand later): Kingdom of England, Kingdom of Scotland, Principality of Wales,
 Earldom of Mercia (+ other Anglo-Saxon earldoms as you flesh out the early period).
 
+> **MVP scope (1000–1216, see [05-seeding.md](../05-seeding.md)).** Start with just England,
+> Scotland, and Wales — enough to render the map and the 1066 transition. The Anglo-Saxon
+> **earldoms** (Mercia, Wessex, Northumbria, East Anglia) are the "fragmentation" refinement:
+> add them to make the pre-1066 map visibly fragmented, since they dissolve into the Norman
+> kingdom after the Conquest. No post-1216 polities needed for the MVP.
+
 ## Authoring format
 
 `data/seed/polities.json` — array of objects (see [`../../data/examples/polities.json`](../../data/examples/polities.json)):

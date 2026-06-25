@@ -12,6 +12,42 @@ validation, and gotchas.
 | 4 | Cities & Population | [seeding/cities.md](./seeding/cities.md) | `city`, `population_sample` | Low–Med | 0 |
 | 5 | Territories | [seeding/territories.md](./seeding/territories.md) | `territory_version` | **High** | 0 (placeholder) → 1 (real) |
 
+## MVP period scope: **1000–1216, the Norman period** (read this first)
+
+The schema spans the full **1000–1500**, but the MVP only **seeds data densely for
+1000–1216** — late Anglo-Saxon England, the Norman Conquest, the Anarchy, and Magna Carta.
+Everything outside this window is a later-expansion concern; don't author it yet.
+
+**Why this window:**
+- It maximises the headline feature. The most dramatic *territorial* change in the whole range
+  is here: fragmented Anglo-Saxon earldoms + independent Scotland/Wales → 1066 conquest →
+  consolidated Norman kingdom. Sliding produces visible change (later medieval England is a
+  fairly static unified realm by comparison).
+- Two world-famous bookends: **Hastings (1066)** and **Magna Carta (1215)**.
+- Mid-window drama that also exercises `is_disputed`: **the Anarchy (1135–1154)**.
+- Bounded scope: ~10 reigns, a handful of polities, and only ~5–6 territory snapshots.
+
+**Anchor years to author** (use for `/meta.keyYears` and territory versions):
+
+| Year | What it captures |
+|------|------------------|
+| 1000 | Late Anglo-Saxon England (fragmented earldoms) + Scotland + Wales |
+| 1066 | Norman Conquest — the pivotal transition |
+| 1086 | Domesday; consolidated Norman kingdom |
+| 1135 | Start of the Anarchy (contested control) |
+| 1154 | Henry II; realm reunified, Angevin period begins |
+| 1215 | Magna Carta |
+
+**Set the slider to the window.** For the MVP, set `/meta.yearRange` to `{min:1000, max:1216}`
+so the timeline matches the seeded data and there are no empty years. Widen it later as you
+extend the data.
+
+**Per-entity scope** is noted in each seeding doc under its own "MVP scope" heading.
+
+**Levers:** leaner → cut to **1000–1100** (Conquest century only, ~3 snapshots). Richer
+(post-MVP) → extend to **1300** (adds the 1284 Welsh annexation) or the full **1500** (Black
+Death, Wars of the Roses, Bosworth).
+
 ## 1. Philosophy (read first)
 
 - **Files are the source of truth.** Author everything as version-controlled files in

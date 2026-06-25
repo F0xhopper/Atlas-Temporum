@@ -8,6 +8,12 @@ This powers the top monarch bar: drag the slider and the reigning monarch change
 is a stable identity (also reused as event participants); a `reign` is the join "*who* ruled
 *what* *when*". One query against Wikidata gives you almost the entire dataset.
 
+> **MVP scope (1000–1216, see [05-seeding.md](../05-seeding.md)).** Seed the ~10 reigns in the
+> window: Edward the Confessor → Harold II → William I → William II → Henry I → Stephen →
+> Henry II → Richard I → John (plus the Cnut-era kings if you start the slider at 1000). The
+> **Anarchy (1135–1154)** is your chance to use `isDisputed: true` (Stephen vs Matilda). Just
+> trim the SPARQL results to `reignFrom ≤ 1216`.
+
 ## Source — Wikidata SPARQL (do this, it's near-instant)
 
 Wikidata has every English/Scottish monarch with reign start/end dates, dynasty, and epithets

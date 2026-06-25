@@ -12,6 +12,22 @@ A `territory_version` row = "polity P controlled *this shape* during `[validFrom
 You create a new version only when borders **meaningfully change** — most years reuse a
 version and the map snaps (no polygon morphing; that's a deliberate MVP decision, docs/02 §1).
 
+> **MVP scope (1000–1216, see [05-seeding.md](../05-seeding.md)).** Author border versions only
+> at the window's anchor years. Minimum viable set per relevant polity:
+>
+> | Version interval | What it shows |
+> |------------------|---------------|
+> | `1000–1066` | Late Anglo-Saxon England (fragmented earldoms, if modelled) + Scotland + Wales |
+> | `1066–1086` | Immediate post-Conquest |
+> | `1086–1135` | Consolidated Norman kingdom (Domesday) |
+> | `1135–1154` | The Anarchy (optionally split/contested control) |
+> | `1154–null` | Angevin realm through Magna Carta and beyond |
+>
+> That's ~4–5 England versions plus near-static Scotland/Wales. `historical-basemaps` gives you
+> the 1000 and 1100 anchors directly; hand-author the 1066/1135/1154 steps from those. If you
+> need it leaner, collapse to two versions (pre-1066, post-1066) — the 1066 snap alone already
+> demonstrates the headline feature.
+
 ## Storage: GeoJSON in, PostGIS out — never store raw JSON
 
 Three formats for three jobs (this is the key decision):

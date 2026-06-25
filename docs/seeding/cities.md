@@ -19,6 +19,11 @@ sparse years, which the API resolves (and interpolates) for any query year.
 MVP cities: London, York, Norwich, Winchester, Canterbury (+ any city referenced by an event,
 e.g. Hastings). Working examples: see [`../../data/examples/`](../../data/examples/).
 
+> **MVP scope (1000–1216, see [05-seeding.md](../05-seeding.md)).** These cities all exist
+> through the window, so the city list is unchanged. Author `population_sample` rows only
+> across 1000–1216 (e.g. samples at 1000, 1086, 1150, 1216). Winchester is worth modelling as
+> *declining* relative to London over the window — a nice bit of visible change.
+
 ## Authoring format
 
 `cities.json`:

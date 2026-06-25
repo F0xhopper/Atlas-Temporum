@@ -8,6 +8,12 @@ learn what happened"). They also feed search. This is the one entity where you *
 the narrative** — and that's correct, because it's a small, high-value set (~30–50 events for
 the MVP) and you want editorial control over the descriptions.
 
+> **MVP scope (1000–1216, see [05-seeding.md](../05-seeding.md)).** Author only events with
+> `year ≤ 1216`. In-window marquee events: **Hastings (1066)**, Domesday (1086), the **White
+> Ship (1120)**, the Anarchy, Becket's murder (1170), the Third Crusade, **Magna Carta (1215)**.
+> Note the **Black Death (1348)** in the example fixtures is *out of window* — it's a
+> later-expansion event, keep it as a template but don't surface it in the MVP.
+
 ## Source — Wikidata for facts, Wikipedia for prose
 
 - **Wikidata** for the structured bits: date (`point in time` P585), coordinates (P625),
