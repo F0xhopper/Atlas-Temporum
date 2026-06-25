@@ -11,19 +11,19 @@ This folder is the source of truth for the MVP design. Read in order:
 | [02-data-models.md](./02-data-models.md) | Domain model, temporal strategy, PostGIS schema, Go structs, validation, seed format |
 | [03-api.md](./03-api.md) | REST endpoints, the `GET /state?year=` aggregate, GeoJSON contracts, caching, errors |
 | [04-frontend.md](./04-frontend.md) | Next.js 16 App Router structure, MapLibre integration, state management, components |
+| [05-seeding.md](./05-seeding.md) | Seeding philosophy, sources, load order, validation, loader; per-entity plans under [`seeding/`](./seeding/) |
 
 ## The one idea to keep in your head
 
 Every feature is a **projection of the domain at a given `year`**. The frontend holds a
 single piece of authoritative UI state — `currentYear` — and the entire screen
-(territories, monarch, cities, events, summary) is a pure function of it:
+(territories, monarch, cities, events) is a pure function of it:
 
 ```
 render(year) = territories(year)
              + monarch(year)
              + cities(year)
              + events(year)
-             + summary(year)
 ```
 
 The backend mirrors this: the headline endpoint is `GET /api/v1/state?year=1215`, which
@@ -38,7 +38,7 @@ year Y?" is a cheap, indexable query.
 
 ## Scope guardrails (MVP)
 
-In scope: timeline, territories, monarchs, events + detail panel, cities/population, year
-summaries, basic search. Out of scope for v1: user accounts, editing UI, real population
+In scope: timeline, territories, monarchs, events + detail panel, cities/population,
+basic search. Out of scope for v1: user accounts, editing UI, real population
 numbers, continental Europe detail, polygon morphing/interpolation between border versions
 (we **snap** instead).

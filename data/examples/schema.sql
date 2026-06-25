@@ -110,12 +110,6 @@ CREATE TABLE population_sample (
 );
 CREATE INDEX popsample_city_year_ix ON population_sample (city_id, year);
 
-CREATE TABLE year_summary (
-  year     INT PRIMARY KEY,
-  headline TEXT NOT NULL,
-  bullets  JSONB NOT NULL DEFAULT '[]'::jsonb
-);
-
 -- Optional: a single-row table to bump for cache busting (ETag source).
 CREATE TABLE data_version (
   id      INT PRIMARY KEY DEFAULT 1 CHECK (id = 1),

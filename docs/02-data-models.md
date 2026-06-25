@@ -50,10 +50,6 @@ static, it has a *state at every year*. Get this right and every feature falls o
                                        │ PopulationSam- │
                                        │ ple (yr × size)│
                                        └────────────────┘
-
-      ┌──────────────┐
-      │ YearSummary  │ (one narrative per notable year; standalone)
-      └──────────────┘
 ```
 
 ## 3. The entities
@@ -195,16 +191,6 @@ samples (e.g. London: 1000→3, 1100→4, 1300→5, 1350→4 post-plague, 1500�
 for a query year, the **most recent sample ≤ year** (step) or a smooth interpolation between
 the bracketing samples (lerp) for nicer growth animation — your choice; see API §3.2.
 
-### 3.9 YearSummary — "what's happening this year" (left panel)
-| Field | Type | Notes |
-|------|------|------|
-| `year` | int PK | one row per notable year |
-| `headline` | text | "1215 — Magna Carta" |
-| `bullets` | text[] / jsonb | ["Magna Carta signed", "Barons revolt against King John", …] |
-
-Not every year needs one. The panel shows the summary for the **nearest authored year ≤
-current** (or exact match only — decide in API §3.4). MVP: exact match, fallback to nearest.
-
 ## 4. Enumerations (single source of truth)
 
 Define these as Postgres enums **and** mirror in Go/TS. Keep names identical across all three.
@@ -253,14 +239,14 @@ CREATE TABLE territory_version (
 CREATE INDEX territory_geom_gix ON territory_version USING GIST (geom);
 CREATE INDEX territory_valid_ix ON territory_version (valid_from, valid_to);
 
--- person, reign, event, event_participant, city, population_sample, year_summary
+-- person, reign, event, event_participant, city, population_sample
 -- ... (full DDL in data/examples/schema.sql)
 ```
 
 ### Indexing strategy (this is what makes the slider instant)
 - **GIST** on every geometry column (`territory_version.geom`, `event.geom`, `city.geom`).
 - **B-tree** on `(valid_from, valid_to)` for territory; `(reign_from, reign_to)` for reign;
-  `year` for `event`, `population_sample`, `year_summary`.
+  `year` for `event` and `population_sample`.
 - Unique on every `slug`.
 - The "state at year" queries are all index-range scans; no full scans even with thousands of
   rows.
@@ -361,12 +347,6 @@ type CityProps struct {
     SizeRank int    `json:"sizeRank"` // 1..5, resolved for the query year
 }
 
-type YearSummary struct {
-    Year     int      `json:"year"`
-    Headline string   `json:"headline"`
-    Bullets  []string `json:"bullets"`
-}
-
 // The aggregate the slider fetches
 type WorldState struct {
     Year        int                       `json:"year"`
@@ -374,7 +354,6 @@ type WorldState struct {
     Cities      FeatureCollection         `json:"cities"`      // Point features
     Events      FeatureCollection         `json:"events"`      // Point features
     Monarchs    []Monarch                 `json:"monarchs"`
-    Summary     *YearSummary              `json:"summary"`
 }
 ```
 
@@ -387,7 +366,7 @@ type WorldState struct {
 
 1. **Author** in `data/seed/`:
    - `polities.json`, `persons.json`, `reigns.json`, `events.json`, `cities.json`,
-     `population.json`, `year_summaries.json`
+     `population.json`
    - `territories/*.geojson` — one FeatureCollection per polity (or per period). Each feature's
      `properties` carry `politySlug`, `validFrom`, `validTo`, `confidence`.
 2. **Validate** with a schema (JSON Schema in `data/seed/schema/`) in CI: slugs unique, years
@@ -410,6 +389,5 @@ These are judgment calls baked into the model above — flag if you disagree:
 3. **Disputed periods can return multiple monarchs** → model supports it; UI shows primary +
    "disputed" badge. ✔
 4. **Events filter by integer `year`** with a configurable ± window for fade-in (default 0).
-5. **YearSummary fallback** → exact-year match, else nearest authored year ≤ current.
 
 If any of these should differ, change here first — the API and frontend docs depend on them.

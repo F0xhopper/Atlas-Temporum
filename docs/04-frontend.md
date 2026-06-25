@@ -7,7 +7,7 @@ part), state management, and each component.
 ## 1. Guiding principles
 
 1. **`currentYear` is the single source of UI truth.** Territories, monarch bar, cities,
-   event markers, and the year-summary panel all derive from it. Changing the year is the only
+   and event markers all derive from it. Changing the year is the only
    "verb" in the core loop.
 2. **The map is imperative; React is declarative — keep them on opposite sides of a wall.**
    MapLibre owns the canvas. React never re-creates the map; it pushes data into existing
@@ -41,7 +41,6 @@ frontend/
 │   │   └── usePlayback.ts      # requestAnimationFrame loop
 │   ├── panels/
 │   │   ├── MonarchBar.tsx      # top overlay
-│   │   ├── YearSummaryPanel.tsx# left overlay
 │   │   └── EventDetailPanel.tsx# right slide-in
 │   ├── search/
 │   │   └── SearchBox.tsx
@@ -196,7 +195,6 @@ useEffect(() => {
 | Component | Position | Source | Shows |
 |----------|----------|--------|-------|
 | `MonarchBar` | top | `worldState.monarchs` | "👑 King: William I (1066–1087)"; flags disputes |
-| `YearSummaryPanel` | left | `worldState.summary` | headline + bullets ("what's happening") |
 | `EventDetailPanel` | right (slide-in) | `useEventDetail(selectedEventSlug)` | name, date, location, description, outcome, key figures |
 | `SearchBox` | top-right | `GET /search` | jump-to results |
 
@@ -237,7 +235,6 @@ currentYear (Zustand)
                             ──► CitiesLayer       (cities FC)
                             ──► EventsLayer        (events FC)
                             ──► MonarchBar         (monarchs[])
-                            ──► YearSummaryPanel    (summary)
 selectedEventSlug (Zustand)
    └─ useEventDetail(slug) ──► EventDetailPanel
 search query

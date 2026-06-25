@@ -26,7 +26,6 @@ endpoints for detail panels and search.
 | GET | `/api/v1/events?year={y}&window={w}` | Events FeatureCollection in/near year |
 | GET | `/api/v1/events/{slug}` | Full event detail (for the panel) |
 | GET | `/api/v1/monarchs?year={y}` | Monarch(s) reigning at year |
-| GET | `/api/v1/summary?year={y}` | Year summary (exact or nearest ≤) |
 | GET | `/api/v1/search?q={text}` | Cross-entity search (cities, events, monarchs) |
 | GET | `/api/v1/meta` | Static config: bounds, key years, legend, year range |
 | GET | `/healthz` | Liveness |
@@ -49,12 +48,7 @@ Returns the full `WorldState` (data-models §6). One request per slider position
   "monarchs": [
     { "personSlug": "harold-godwinson", "name": "Harold II", "title": "King of England",
       "reignFrom": 1066, "reignTo": 1066, "isDisputed": false }
-  ],
-  "summary": {
-    "year": 1066, "headline": "1066 — The Norman Conquest",
-    "bullets": ["Edward the Confessor dies", "Harold II crowned",
-                "Battle of Stamford Bridge", "Battle of Hastings — William wins"]
-  }
+  ]
 }
 ```
 See [../data/examples/world_state.json](../data/examples/world_state.json) for a fuller body.
@@ -98,10 +92,8 @@ location. This is fetched lazily when the user clicks a marker, keeping `/state`
 }
 ```
 
-### 3.5 `GET /monarchs?year=` and `/summary?year=`
+### 3.5 `GET /monarchs?year=`
 - `monarchs`: array (possibly >1 during disputes). Powers the top bar.
-- `summary`: `200` with the summary, or `204`/`null` if none and no nearest match. Default
-  behavior: exact year, else nearest authored year ≤ `year` (configurable).
 
 ### 3.6 `GET /search?q={text}`
 Cross-entity search for the search box. Returns a flat ranked list of hits, each with enough

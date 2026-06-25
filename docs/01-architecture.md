@@ -50,7 +50,6 @@ WorldState(year) = {
   cities:       FeatureCollection<Point>      // settlements + size valid AT year
   events:       FeatureCollection<Point>      // events occurring IN year (± window)
   monarchs:     Monarch[]                      // rulers reigning AT year (per polity)
-  summary:      YearSummary | null             // narrative for year
 }
 ```
 
@@ -139,7 +138,7 @@ and our custom data lives in `feature.properties`.
    `GET /api/v1/state?year=1215`.
 3. Map effect diffs the new `WorldState` against current MapLibre sources and calls
    `source.setData(...)` for `territories`, `cities`, `events`. No full re-render of the map.
-4. Overlay panels (monarch bar, year summary, event list) re-render from the same data.
+4. Overlay panels (monarch bar, event list) re-render from the same data.
 5. Prefetch: while playing, prefetch `year+1` (and key years) so playback is smooth.
 
 ## 7. Environments & deployment (brief)
