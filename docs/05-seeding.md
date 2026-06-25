@@ -63,7 +63,7 @@ Before any insert:
 - **Years** ∈ `[1000, 1500]`; intervals satisfy `valid_to > valid_from` / `reign_to > reign_from`.
 - **FK references** (every `politySlug`, `personSlug`, `citySlug`) resolve to a known slug.
 - **Geometry** parses, is valid (`ST_IsValid`; auto-`ST_MakeValid`), SRID 4326, winding correct.
-- **Enums** (`kind`, `type`, `confidence`, `role`) are from the allowed sets (docs/02 §4).
+- **Enums** (`kind`, `type`, `role`) are from the allowed sets (docs/02 §4).
 
 Author JSON Schemas under `data/seed/schema/` and run them in CI so bad data never merges.
 

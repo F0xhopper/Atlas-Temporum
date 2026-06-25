@@ -59,7 +59,7 @@ Both are fine; start with separate queries for clarity, optimize later.
 
 ### 3.2 `GET /territories?year=` and `/cities?year=`
 - **Territories:** features are `MultiPolygon`; `properties` = `TerritoryProps`
-  (`politySlug, name, color, kind, confidence`). Query = territory_version valid at year.
+  (`politySlug, name, color, kind`). Query = territory_version valid at year.
 - **Cities:** features are `Point`; `properties` = `CityProps` (`slug, name, sizeRank`).
   `sizeRank` is resolved for the year. **Resolution mode** via `?size=step|lerp` (default
   `lerp`): `step` = most-recent sample ≤ year; `lerp` = linear interpolation between the
@@ -143,7 +143,7 @@ SELECT json_build_object(
      'geometry', ST_AsGeoJSON(tv.geom)::json,
      'properties', json_build_object(
         'politySlug', p.slug, 'name', p.name, 'color',
-        COALESCE(tv.color_override, p.color), 'kind', p.kind, 'confidence', tv.confidence)
+        COALESCE(tv.color_override, p.color), 'kind', p.kind)
   )), '[]'::json)
 )
 FROM territory_version tv JOIN polity p ON p.id = tv.polity_id

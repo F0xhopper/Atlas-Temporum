@@ -85,7 +85,6 @@ The heart of the territories layer. One row = "this polity controlled *this shap
 | `valid_from` | int (year) | inclusive |
 | `valid_to` | int (year) null | exclusive; NULL = through 1500 |
 | `color_override` | text null | rare; defaults to polity color |
-| `confidence` | enum `attested`\|`approximate`\|`disputed` | honesty about source quality |
 | `note` | text null | e.g. "borders highly uncertain" |
 
 Temporal model: **half-open year interval**. "Territories at year Y" =
@@ -198,7 +197,6 @@ Define these as Postgres enums **and** mirror in Go/TS. Keep names identical acr
 ```
 polity_kind:   kingdom | earldom | principality | duchy | lordship | other
 event_type:    battle | coronation | treaty | law | rebellion | disease | castle | other
-confidence:    attested | approximate | disputed
 ```
 
 Frontend maps `event_type` → icon (⚔ 👑 📜 📜 🔥 ☠ 🏰) and color. Keep that mapping in
@@ -213,7 +211,6 @@ CREATE EXTENSION IF NOT EXISTS postgis;
 
 CREATE TYPE polity_kind AS ENUM ('kingdom','earldom','principality','duchy','lordship','other');
 CREATE TYPE event_type  AS ENUM ('battle','coronation','treaty','law','rebellion','disease','castle','other');
-CREATE TYPE confidence  AS ENUM ('attested','approximate','disputed');
 
 CREATE TABLE polity (
   id            BIGGENERATED-... ,         -- see file (GENERATED ALWAYS AS IDENTITY)
@@ -232,7 +229,6 @@ CREATE TABLE territory_version (
   valid_from  INT NOT NULL,
   valid_to    INT,                          -- NULL = open (through 1500)
   color_override TEXT,
-  confidence  confidence NOT NULL DEFAULT 'approximate',
   note        TEXT,
   CHECK (valid_to IS NULL OR valid_to > valid_from)
 );
@@ -283,7 +279,6 @@ package domain
 
 type PolityKind string
 type EventType  string
-type Confidence string
 
 type Polity struct {
     ID          int64      `json:"-"`
@@ -300,7 +295,6 @@ type TerritoryProps struct {
     Name       string     `json:"name"`
     Color      string     `json:"color"`
     Kind       PolityKind `json:"kind"`
-    Confidence Confidence `json:"confidence"`
 }
 
 type Monarch struct {
@@ -368,7 +362,7 @@ type WorldState struct {
    - `polities.json`, `persons.json`, `reigns.json`, `events.json`, `cities.json`,
      `population.json`
    - `territories/*.geojson` — one FeatureCollection per polity (or per period). Each feature's
-     `properties` carry `politySlug`, `validFrom`, `validTo`, `confidence`.
+     `properties` carry `politySlug`, `validFrom`, `validTo`.
 2. **Validate** with a schema (JSON Schema in `data/seed/schema/`) in CI: slugs unique, years
    in `[1000,1500]`, geometry valid (`ST_IsValid`), no reign/territory interval overlaps for
    the same polity beyond what's intended.

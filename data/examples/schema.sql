@@ -7,7 +7,6 @@ CREATE EXTENSION IF NOT EXISTS pg_trgm;   -- fuzzy search
 -- ---------- enums ----------
 CREATE TYPE polity_kind AS ENUM ('kingdom','earldom','principality','duchy','lordship','other');
 CREATE TYPE event_type  AS ENUM ('battle','coronation','treaty','law','rebellion','disease','castle','other');
-CREATE TYPE confidence  AS ENUM ('attested','approximate','disputed');
 
 -- ---------- identity tables ----------
 CREATE TABLE polity (
@@ -50,7 +49,6 @@ CREATE TABLE territory_version (
   valid_from     INT NOT NULL,
   valid_to       INT,                          -- NULL = open through 1500
   color_override TEXT,
-  confidence     confidence NOT NULL DEFAULT 'approximate',
   note           TEXT,
   CHECK (valid_to IS NULL OR valid_to > valid_from)
 );

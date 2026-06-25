@@ -60,7 +60,6 @@ temporal/identity metadata in `properties`. See
     "politySlug": "kingdom-of-england",
     "validFrom": 1066,
     "validTo": null,
-    "confidence": "approximate",
     "note": "Norman and later England."
   },
   "geometry": { "type": "MultiPolygon", "coordinates": [ /* ... */ ] }
@@ -77,7 +76,6 @@ temporal/identity metadata in `properties`. See
 | `politySlug` | Must match a `polity.slug`. The loader resolves it to `polity_id`. |
 | `validFrom` | Integer year the borders take effect (inclusive). |
 | `validTo` | Integer year they end (exclusive), or `null` for "through 1500". Half-open so adjacent versions don't overlap or gap. |
-| `confidence` | `attested \| approximate \| disputed` — be honest; most medieval borders are `approximate`. |
 | `note` | Optional caveat ("borders highly uncertain"). |
 | geometry | `MultiPolygon`, SRID 4326 (lng/lat). Use MultiPolygon even for single landmasses for schema consistency. |
 

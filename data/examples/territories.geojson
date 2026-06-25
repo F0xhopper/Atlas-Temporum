@@ -8,7 +8,6 @@
         "politySlug": "kingdom-of-england",
         "validFrom": 1000,
         "validTo": 1066,
-        "confidence": "approximate",
         "note": "Late Anglo-Saxon England (illustrative bounds)."
       },
       "geometry": {
@@ -22,7 +21,6 @@
         "politySlug": "kingdom-of-england",
         "validFrom": 1066,
         "validTo": null,
-        "confidence": "approximate",
         "note": "Norman and later England (illustrative bounds)."
       },
       "geometry": {
@@ -36,7 +34,6 @@
         "politySlug": "kingdom-of-scotland",
         "validFrom": 1000,
         "validTo": null,
-        "confidence": "approximate",
         "note": "Kingdom of Scotland (illustrative bounds)."
       },
       "geometry": {

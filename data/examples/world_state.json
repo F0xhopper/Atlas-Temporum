@@ -10,8 +10,7 @@
           "politySlug": "kingdom-of-england",
           "name": "Kingdom of England",
           "color": "#b03a2e",
-          "kind": "kingdom",
-          "confidence": "approximate"
+          "kind": "kingdom"
         },
         "geometry": {
           "type": "MultiPolygon",
@@ -24,8 +23,7 @@
           "politySlug": "kingdom-of-scotland",
           "name": "Kingdom of Scotland",
           "color": "#1f6f8b",
-          "kind": "kingdom",
-          "confidence": "approximate"
+          "kind": "kingdom"
         },
         "geometry": {
           "type": "MultiPolygon",
